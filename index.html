@@ -208,7 +208,7 @@
         function postData() {
 
             elSubmit.disabled = true;
-            const stringQuery = `?no=${elNo.value}&name=${encodeURI(elName.value)}&flower=${document.querySelector('[name=flower]:checked').value}&timestamp=${new Date()}`;
+            const stringQuery = `?no=${elNo.value.trim()}&name=${encodeURI(elName.value.trim())}&flower=${document.querySelector('[name=flower]:checked').value}&timestamp=${new Date()}`;
 
             var xhr = new XMLHttpRequest();
             xhr.open('post', apiPostData + stringQuery, true);
