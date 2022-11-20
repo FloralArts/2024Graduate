@@ -295,7 +295,7 @@
                     });
 
                     elCanBeChooseDatas.innerHTML = canBeChooseHtml;
-                    elCount.innerHTML = aryAllData.length + (aryAllData.length ? '種：' : '');
+                    elCount.innerHTML = (aryAllData.length - (reverseData.length - 1)) + (aryAllData.length ? '種：' : '');
 
                     _onloading(false);
 
