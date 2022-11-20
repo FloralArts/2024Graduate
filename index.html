@@ -11,8 +11,7 @@
     <meta property="og:locale" content="zh-TW">
     <meta property="og:type" content="website">
     <meta property="og:title" content="中華花藝">
-    <meta property="og:description"
-        content="UIkit, a lightweight and modular front-end framework for developing fast and powerful web interfaces.">
+    <meta property="og:description" content="中華花藝-選擇2023畢業展花型">
     <meta property="og:url" content="http://www.florist.org.tw/">
     <meta property="og:site_name" content="中華花藝">
     <meta property="og:image" content="http://www.florist.org.tw/images/logo-wide.png">
@@ -55,7 +54,6 @@
         #canBeChooseDatas.animateShow,
         #chosenDatas.animateShow {
             opacity: 1;
-
         }
 
         #chosenDatasWrapper {
@@ -78,6 +76,10 @@
             position: fixed;
             bottom: 0;
             left: 12%;
+        }
+
+        #btnSubmit:disabled {
+            background: #fff;
         }
 
         @media screen and (max-width:700px) {
@@ -165,8 +167,8 @@
 
     <script>
 
-        const apiAllData = 'https://script.google.com/macros/s/AKfycbw6tPZXQa_rdYsr4WPhu0QLRVHJ64Sy1gw0JJdeuVsO83vVnQ34IYxQJD8bKC1n45lzKg/exec';
-        const apiChosenData = 'https://script.googleusercontent.com/macros/echo?user_content_key=dtACdfNYz2EL7-GbZzOA53nwRbLkG-Yo22mWjj_1pWDy7QyVpF-0VLe1otyG4IyNY5mIBADKdhgAzkUYlun_AOni7T38zTCDm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnEG5nezOMO7ecXGlyp0rnLZbqLGV5iuqnGsC116_uJy5rsJmMr_hBtlk4DeRvYpCTNyDxMACP-0ZYirRTlCMJDVIPOUmbXEGO9z9Jw9Md8uu&lib=MVK_5HvZKuK68Mkl46pz2tVGx0Qw1QAIM';
+        const apiAllData = 'https://script.google.com/macros/s/AKfycbzcwvL8OPJUjPLV9aMVLP4Wfpslwb_0iAj59pG8YHRCFsgVzoAlZTSB2LLZCbfiLeh-2w/exec';
+        const apiChosenData = 'https://script.google.com/macros/s/AKfycbzhDjn5o_NKTu0ufSDud9KbiclyqSCbPTK4nhCiPPYd86FAXIN1LIdrAPaOM4T4Vr9HiA/exec';
         const apiPostData = 'https://script.google.com/macros/s/AKfycbzIYrtWp2z-T2zhuRpjXXBqaKqLrl5A0A2a-6D48kVKvqmKyaOTqYzopzPDk28_GeZ2yQ/exec';
 
         const elHtml = document.querySelector('html');
