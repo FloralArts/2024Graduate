@@ -114,7 +114,7 @@
 
 <body>
     <div>
-        <h4 class="uk-background-primary uk-light uk-padding-small">中華花藝-選擇2023畢業展花型</h4>
+        <h4 class="uk-background-primary uk-light uk-padding-small">中華花藝-選擇2024畢業展花型</h4>
         <header class="uk-container uk-container-small">
             <div class="uk-column-1-2@s">
                 <div class="uk-margin-small-bottom uk-flex uk-flex-middle">
@@ -129,6 +129,13 @@
                         for="form-horizontal-no">請輸入會員編號</label>
                     <div class="uk-form-controls uk-flex-1">
                         <input class="uk-input uk-width-1-1" id="form-horizontal-no" type="text" placeholder="...">
+                    </div>
+                </div>
+                <div class="uk-margin-small-bottom uk-flex uk-flex-middle">
+                    <label class="uk-width-auto uk-margin-right uk-text-primary"
+                        for="form-horizontal-no">您是第幾屆的呢</label>
+                    <div class="uk-form-controls uk-flex-1">
+                        <input class="uk-input uk-width-1-1" id="form-horizontal-session" type="text" placeholder="...">
                     </div>
                 </div>
             </div>
@@ -169,11 +176,13 @@
 
         const apiAllData = 'https://script.google.com/macros/s/AKfycbzcwvL8OPJUjPLV9aMVLP4Wfpslwb_0iAj59pG8YHRCFsgVzoAlZTSB2LLZCbfiLeh-2w/exec';
         const apiChosenData = 'https://script.google.com/macros/s/AKfycbzhDjn5o_NKTu0ufSDud9KbiclyqSCbPTK4nhCiPPYd86FAXIN1LIdrAPaOM4T4Vr9HiA/exec';
-        const apiPostData = 'https://script.google.com/macros/s/AKfycbyMcYwOZ0JgpSGC_Ms09WXK06ZT-5txWzV_Zbua5PVCT0hZOFwFGjn9_QLU9IdmGeqxyQ/exec'
+        const apiPostData = 'https://script.google.com/macros/s/AKfycbyFFVxs21lVtAxenL4OYgwIMSz5Kq4Vvkmy6yiXBeJuk2HeqzMDqP3vPkXgmWU9q2KJ/exec';
         
         const elHtml = document.querySelector('html');
         const elName = document.querySelector('#form-horizontal-name');
         const elNo = document.querySelector('#form-horizontal-no');
+        const elSession = document.querySelector('#form-horizontal-session');
+
         const elSubmit = document.querySelector('#btnSubmit');
         const elLoading = document.querySelectorAll('.onloading');
         const elCanBeChooseDatas = document.querySelector('#canBeChooseDatas');
@@ -196,6 +205,12 @@
                 return
             }
 
+            if (elSession.value.trim() === '') {
+                alert('請輸入您是第幾屆的呢');
+                elSession.focus();
+                return
+            }
+
             const el = document.querySelector('[name=flower]:checked');
             if (el === null) {
                 alert('請選擇一種花型');
@@ -210,7 +225,7 @@
         function postData() {
 
             elSubmit.disabled = true;
-            const stringQuery = `?no=${elNo.value.trim()}&name=${encodeURI(elName.value.trim())}&flower=${document.querySelector('[name=flower]:checked').value}&timestamp=${new Date()}`;
+            const stringQuery = `?no=${elNo.value.trim()}&session=${elSession.value.trim()}&name=${encodeURI(elName.value.trim())}&flower=${document.querySelector('[name=flower]:checked').value}&timestamp=${new Date()}`;
 
             var xhr = new XMLHttpRequest();
             xhr.open('post', apiPostData + stringQuery, true);
