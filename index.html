@@ -175,7 +175,7 @@
     <script>
 
         const apiAllData = 'https://script.google.com/macros/s/AKfycbzcwvL8OPJUjPLV9aMVLP4Wfpslwb_0iAj59pG8YHRCFsgVzoAlZTSB2LLZCbfiLeh-2w/exec';
-        const apiChosenData = 'https://script.google.com/macros/s/AKfycbzhDjn5o_NKTu0ufSDud9KbiclyqSCbPTK4nhCiPPYd86FAXIN1LIdrAPaOM4T4Vr9HiA/exec';
+        const apiChosenData = 'https://script.google.com/macros/s/AKfycbzFVWXI8D2_A3jrQ8oCwmRBIT1SEYzC4Hh5LiGhwOjsQNu97d5rQqicd2vdgJahaU8h/exec';
         const apiPostData = 'https://script.google.com/macros/s/AKfycbyFFVxs21lVtAxenL4OYgwIMSz5Kq4Vvkmy6yiXBeJuk2HeqzMDqP3vPkXgmWU9q2KJ/exec';
         
         const elHtml = document.querySelector('html');
@@ -235,8 +235,9 @@
                 var jsonRes = JSON.parse(xhr.responseText);
                 alert(jsonRes.result);
                 getAllData();
-                elName.value = '';
                 elNo.value = '';
+                elSession.value = '';
+                elName.value = '';
                 elSubmit.disabled = false;
                 elHtml.scrollTop = 0;
             }
@@ -279,8 +280,8 @@
                     reverseData.forEach((x, index) => {
                         if (index !== reverseData.length - 1) {
                             chosenHtml += `<li class="item-data uk-margin-remove uk-padding-remove">
-                                    【<span class="flower">${x[3]}</span>】
-                                    <span class="author">${x[2]}</span>
+                                    【<span class="flower">${x[1]}</span>】
+                                    <span class="author">${x[4]}</span>
                                     </li>`
                         }
                     });
