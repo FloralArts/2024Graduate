@@ -57,7 +57,8 @@
         }
 
         #chosenDatasWrapper {
-            width: 360px;
+            width: 400px;
+            max-width: 100%;
             max-height: 200px;
             overflow-y: auto;
             background: #fff;
@@ -128,7 +129,7 @@
                     <label class="uk-width-auto uk-margin-right uk-text-primary"
                         for="form-horizontal-no">請輸入會員編號</label>
                     <div class="uk-form-controls uk-flex-1">
-                        <input class="uk-input uk-width-1-1" id="form-horizontal-no" type="text" placeholder="...">
+                        <input class="uk-input uk-width-1-1" id="form-horizontal-no" type="text" inputmode="numeric" placeholder="...">
                     </div>
                 </div>
                 <div class="uk-margin-small-bottom uk-flex uk-flex-middle">
@@ -196,19 +197,31 @@
             if (elName.value.trim() === '') {
                 alert('請輸入您的大名');
                 elName.focus();
-                return
+                return;
             }
 
             if (elNo.value.trim() === '') {
                 alert('請輸入會員編號');
                 elNo.focus();
-                return
+                return;
+            }
+            else{
+                
+                const hasRepeat = Array.from(document.querySelectorAll('.author')).some(x=>{
+                    return x.textContent === elNo.value.trim()
+                })
+
+                if(hasRepeat){
+                    alert('您已經填過了喔\n若要取消上次選的花型，請致電教學組\n\n02-2758-5222#22');
+                    return;
+                }
+
             }
 
             if (elSession.value.trim() === '') {
                 alert('請輸入您是第幾屆的呢');
                 elSession.focus();
-                return
+                return;
             }
 
             const el = document.querySelector('[name=flower]:checked');
@@ -243,6 +256,7 @@
             }
 
         }
+        
         function getAllData() {
             _onloading(true);
 
@@ -280,8 +294,8 @@
                     reverseData.forEach((x, index) => {
                         if (index !== reverseData.length - 1) {
                             chosenHtml += `<li class="item-data uk-margin-remove uk-padding-remove">
-                                    【<span class="flower">${x[1]}</span>】
-                                    <span class="author">${x[4]}</span>
+                                    【<span class="author">${x[1]}</span>】
+                                    <span class="flower">${x[4]}</span>
                                     </li>`
                         }
                     });
